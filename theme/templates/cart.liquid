@@ -1,0 +1,119 @@
+<!-- Cart page — editorial, matches the bag drawer style -->
+<div class="container" style="padding-block:clamp(2.5rem,6vw,5rem);max-width:900px;">
+
+  <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:clamp(2rem,4vw,3rem);">
+    <h1 style="font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:400;color:var(--forest);">
+      Your Bag
+    </h1>
+    <span style="font-family:var(--font-body);font-size:0.5625rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid-cream);">
+      {{ cart.item_count }} item{%- if cart.item_count != 1 -%}s{%- endif -%}
+    </span>
+  </div>
+
+  {%- if cart.item_count == 0 -%}
+
+    <div style="text-align:center;padding:4rem 0;">
+      <p style="font-family:var(--font-serif);font-size:1.375rem;font-weight:400;color:var(--forest);margin-bottom:1rem;">
+        Your bag is empty.
+      </p>
+      <p style="font-family:var(--font-body);font-size:0.875rem;color:var(--mid-cream);margin-bottom:2.5rem;">
+        The drop is live. Don't miss out.
+      </p>
+      <a href="/collections/all" class="btn btn-burgundy">Shop the Drop</a>
+    </div>
+
+  {%- else -%}
+
+    {%- form 'cart', cart -%}
+
+      <!-- Line items -->
+      <div style="border-top:1px solid var(--border);">
+        {%- for item in cart.items -%}
+          <div style="display:grid;grid-template-columns:100px 1fr auto;gap:1.5rem;padding:1.75rem 0;border-bottom:1px solid var(--border);align-items:start;">
+
+            <!-- Image -->
+            <a href="{{ item.url }}">
+              <div style="aspect-ratio:3/4;overflow:hidden;border-radius:4px;background:var(--sky);">
+                <img
+                  src="{{ item.image | image_url: width: 300 }}"
+                  alt="{{ item.image.alt | escape }}"
+                  width="100"
+                  height="133"
+                  loading="lazy"
+                  style="width:100%;height:100%;object-fit:cover;"
+                >
+              </div>
+            </a>
+
+            <!-- Info -->
+            <div>
+              <p style="font-family:var(--font-body);font-size:0.5rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--mid-cream);margin-bottom:0.375rem;">
+                {{ item.product.type }}
+              </p>
+              <a href="{{ item.url }}" style="font-family:var(--font-serif);font-size:1.125rem;font-weight:400;color:var(--forest);display:block;margin-bottom:0.375rem;line-height:1.2;">
+                {{ item.product.title }}
+              </a>
+              {%- unless item.variant.title == 'Default Title' -%}
+                <p style="font-family:var(--font-body);font-size:0.625rem;color:var(--mid-cream);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1rem;">
+                  {{ item.variant.title }}
+                </p>
+              {%- endunless -%}
+
+              <!-- Qty -->
+              <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.75rem;">
+                <span style="font-family:var(--font-body);font-size:0.5625rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--mid-cream);margin-right:0.25rem;">Qty</span>
+                <input
+                  type="number"
+                  name="updates[]"
+                  id="updates_{{ item.key }}"
+                  value="{{ item.quantity }}"
+                  min="0"
+                  style="width:56px;border:1.5px solid var(--border);border-radius:3px;padding:0.375rem 0.5rem;text-align:center;font-family:var(--font-body);font-size:0.875rem;background:transparent;color:var(--forest);"
+                >
+              </div>
+            </div>
+
+            <!-- Price + remove -->
+            <div style="text-align:right;">
+              <p style="font-family:var(--font-body);font-size:0.9375rem;font-weight:600;color:var(--forest);margin-bottom:0.75rem;">
+                {{ item.final_line_price | money }}
+              </p>
+              <a
+                href="{{ item.url_to_remove }}"
+                style="font-family:var(--font-body);font-size:0.5rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid-cream);border-bottom:1px solid currentColor;padding-bottom:1px;transition:color 0.2s;"
+                onmouseover="this.style.color='var(--burgundy)'"
+                onmouseout="this.style.color='var(--mid-cream)'"
+              >
+                Remove
+              </a>
+            </div>
+
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Totals + checkout -->
+      <div style="max-width:380px;margin-left:auto;padding-top:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.5rem;">
+          <span style="font-family:var(--font-body);font-size:0.5625rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--mid-cream);">Subtotal</span>
+          <span style="font-family:var(--font-body);font-size:1.0625rem;font-weight:600;color:var(--forest);">{{ cart.total_price | money }}</span>
+        </div>
+        <p style="font-family:var(--font-body);font-size:0.6875rem;color:var(--mid-cream);margin-bottom:1.75rem;">
+          Shipping and taxes calculated at checkout.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <button type="submit" name="checkout" class="btn btn-burgundy" style="width:100%;justify-content:center;">
+            Checkout
+          </button>
+          <button type="submit" name="update" class="btn btn-outline-forest" style="width:100%;justify-content:center;">
+            Update Bag
+          </button>
+        </div>
+      </div>
+
+    {%- endform -%}
+
+  {%- endif -%}
+
+</div>

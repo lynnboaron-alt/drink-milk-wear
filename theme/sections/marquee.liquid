@@ -1,0 +1,84 @@
+<!-- Marquee ticker bar — scrolling text with ✦ separators -->
+{%- assign bg    = section.settings.background -%}
+{%- assign color = section.settings.text_color -%}
+
+<div
+  class="marquee-bar"
+  style="background:{{ bg }};padding:{{ section.settings.padding_y }}rem 0;"
+  aria-hidden="true"
+>
+  <div class="marquee-track" style="animation-duration:{{ section.settings.speed }}s;">
+    {%- for i in (1..8) -%}
+      <span style="color:{{ color }};">{{ section.settings.text }}</span>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee Ticker",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Ticker text",
+      "default": "Drink Milk"
+    },
+    {
+      "type": "select",
+      "id": "background",
+      "label": "Background color",
+      "options": [
+        { "value": "#26422B", "label": "Forest green" },
+        { "value": "#71271F", "label": "Burgundy" },
+        { "value": "#D6512A", "label": "Terracotta" },
+        { "value": "#CDE3F6", "label": "Sky blue" },
+        { "value": "#F9F5E6", "label": "Cream" }
+      ],
+      "default": "#D6512A"
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label": "Text color",
+      "options": [
+        { "value": "#F9F5E6", "label": "Cream" },
+        { "value": "#26422B", "label": "Forest green" },
+        { "value": "#71271F", "label": "Burgundy" }
+      ],
+      "default": "#F9F5E6"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Scroll speed",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "min": 0,
+      "max": 2,
+      "step": 0.25,
+      "unit": "rem",
+      "label": "Vertical padding",
+      "default": 0.75
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Ticker",
+      "settings": {
+        "text": "Drink Milk",
+        "background": "#D6512A",
+        "text_color": "#F9F5E6"
+      }
+    }
+  ]
+}
+{% endschema %}

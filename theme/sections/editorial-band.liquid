@@ -10,7 +10,7 @@
 
       <div>
         <h2 class="editorial-headline" data-animate data-animate-delay="1">
-          {{ section.settings.headline }}
+          {{ section.settings.headline | newline_to_br }}
         </h2>
 
         {%- if section.settings.body != blank -%}

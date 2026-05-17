@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ gift_card.initial_value | money_without_trailing_zeros }} {{ 'Gift Card' }} — {{ shop.name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=DM+Sans:wght@400;600;700&family=Fredoka:wght@700&display=swap" rel="stylesheet">
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+</head>
+<body style="background:var(--cream);">
+
+  <div class="container" style="padding-block:clamp(3rem,7vw,6rem);max-width:640px;text-align:center;">
+
+    <a href="/" style="display:inline-block;font-family:var(--font-logo);font-size:1.25rem;font-weight:700;color:var(--forest);margin-bottom:3rem;">
+      DRINK MILK
+    </a>
+
+    <!-- Card visual -->
+    <div style="background:var(--forest);border-radius:12px;padding:3rem 2rem;margin-bottom:2.5rem;position:relative;overflow:hidden;">
+      <!-- Blob decoration -->
+      <div style="position:absolute;bottom:-40px;left:-40px;width:180px;height:160px;background:var(--sky);border-radius:60% 40% 70% 30% / 50% 60% 40% 50%;opacity:0.25;"></div>
+      <p style="font-family:var(--font-logo);font-size:1.125rem;font-weight:700;color:var(--cream);margin-bottom:2rem;position:relative;">DRINK MILK</p>
+      <p style="font-family:var(--font-serif);font-size:3rem;font-weight:400;color:var(--cream);line-height:1;position:relative;">
+        {{ gift_card.initial_value | money_without_trailing_zeros }}
+      </p>
+      <p style="font-family:var(--font-body);font-size:0.625rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(249,245,230,0.5);margin-top:0.75rem;position:relative;">Gift Card</p>
+    </div>
+
+    {%- if gift_card.enabled -%}
+      <p style="font-family:var(--font-body);font-size:0.5625rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mid-cream);margin-bottom:0.75rem;">Your gift card code</p>
+      <p style="font-family:var(--font-serif);font-size:1.5rem;font-weight:400;color:var(--forest);letter-spacing:0.12em;margin-bottom:0.5rem;word-break:break-all;">
+        {{ gift_card.code | format_code }}
+      </p>
+      <p style="font-family:var(--font-body);font-size:0.75rem;color:var(--mid-cream);margin-bottom:2rem;">
+        Balance: {{ gift_card.balance | money }}
+      </p>
+    {%- else -%}
+      <p style="font-family:var(--font-body);font-size:0.875rem;color:var(--mid-cream);margin-bottom:2rem;">This gift card has been disabled.</p>
+    {%- endif -%}
+
+    <a href="{{ shop.url }}" class="btn btn-forest">Shop the Drop</a>
+
+  </div>
+
+</body>
+</html>

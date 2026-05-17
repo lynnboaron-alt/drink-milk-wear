@@ -1,0 +1,206 @@
+<!-- Product Spotlight: one hero product, full editorial treatment -->
+<!-- Left: large campaign image. Right: product info + add to cart. -->
+{%- assign product = all_products[section.settings.product] -%}
+{%- assign variant  = product.selected_or_first_available_variant -%}
+
+<section style="background:var(--cream);">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:80vh;" class="spotlight-grid">
+
+    <!-- Image -->
+    <div style="position:relative;overflow:hidden;background:var(--sky);">
+      {%- if section.settings.image != blank -%}
+        <img
+          src="{{ section.settings.image | image_url: width: 1200 }}"
+          srcset="{{ section.settings.image | image_url: width: 700 }} 700w,
+                  {{ section.settings.image | image_url: width: 1200 }} 1200w"
+          sizes="(max-width:768px) 100vw, 50vw"
+          alt="{{ section.settings.image.alt | default: product.title }}"
+          loading="lazy"
+          style="width:100%;height:100%;object-fit:cover;display:block;"
+        >
+      {%- elsif product != blank and product.featured_image -%}
+        <img
+          src="{{ product.featured_image | image_url: width: 1200 }}"
+          srcset="{{ product.featured_image | image_url: width: 700 }} 700w,
+                  {{ product.featured_image | image_url: width: 1200 }} 1200w"
+          sizes="(max-width:768px) 100vw, 50vw"
+          alt="{{ product.featured_image.alt | default: product.title }}"
+          loading="lazy"
+          style="width:100%;height:100%;object-fit:cover;display:block;"
+        >
+      {%- else -%}
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-body);font-size:0.5rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(38,66,43,0.25);">Campaign Image</span>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.badge != blank -%}
+        <span style="position:absolute;top:1.25rem;left:1.25rem;background:var(--terracotta);color:var(--cream);font-family:var(--font-body);font-size:0.5rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;padding:0.3rem 0.625rem;border-radius:2px;">
+          {{ section.settings.badge }}
+        </span>
+      {%- endif -%}
+    </div>
+
+    <!-- Product info -->
+    <div style="display:flex;flex-direction:column;justify-content:center;padding:clamp(2.5rem,6vw,5rem);">
+
+      {%- if section.settings.eyebrow != blank -%}
+        <p style="font-family:var(--font-body);font-size:0.5625rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--burgundy);margin-bottom:1rem;">
+          {{ section.settings.eyebrow }}
+        </p>
+      {%- endif -%}
+
+      {%- if product != blank -%}
+        <h2 style="font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:400;color:var(--forest);line-height:1;margin-bottom:1rem;">
+          {{ product.title }}
+        </h2>
+
+        <p style="font-family:var(--font-body);font-size:1rem;font-weight:600;color:var(--forest);margin-bottom:1.5rem;">
+          {{ product.price | money }}
+        </p>
+      {%- else -%}
+        <h2 style="font-family:var(--font-serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:400;color:var(--forest);line-height:1;margin-bottom:1rem;">
+          {{ section.settings.title }}
+        </h2>
+      {%- endif -%}
+
+      {%- if section.settings.description != blank -%}
+        <p style="font-family:var(--font-body);font-size:0.9375rem;color:var(--mid-cream);line-height:1.7;max-width:40ch;margin-bottom:2rem;">
+          {{ section.settings.description }}
+        </p>
+      {%- elsif product.description != blank -%}
+        <p style="font-family:var(--font-body);font-size:0.9375rem;color:var(--mid-cream);line-height:1.7;max-width:40ch;margin-bottom:2rem;">
+          {{ product.description | strip_html | truncate: 180 }}
+        </p>
+      {%- endif -%}
+
+      <!-- Details list -->
+      {%- if section.settings.detail_1 != blank or section.settings.detail_2 != blank or section.settings.detail_3 != blank -%}
+        <ul style="list-style:none;margin-bottom:2rem;display:flex;flex-direction:column;gap:0.5rem;">
+          {%- for i in (1..3) -%}
+            {%- assign detail_key = 'detail_' | append: i -%}
+            {%- if section.settings[detail_key] != blank -%}
+              <li style="font-family:var(--font-body);font-size:0.8125rem;color:var(--mid-cream);display:flex;align-items:center;gap:0.625rem;">
+                <span style="width:4px;height:4px;border-radius:50%;background:var(--terracotta);flex-shrink:0;"></span>
+                {{ section.settings[detail_key] }}
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if product != blank -%}
+        <a href="{{ product.url }}" class="btn btn-burgundy" style="align-self:flex-start;">
+          {{ section.settings.cta_label | default: 'Shop This Piece' }}
+        </a>
+      {%- elsif section.settings.cta_url != blank -%}
+        <a href="{{ section.settings.cta_url }}" class="btn btn-burgundy" style="align-self:flex-start;">
+          {{ section.settings.cta_label | default: 'Shop Now' }}
+        </a>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 768px) {
+    .spotlight-grid { grid-template-columns: 1fr !important; }
+    .spotlight-grid > div:first-child { min-height: 60vw; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product Spotlight",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (if no product selected)",
+      "default": "The Hero Piece"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Campaign image (overrides product image)"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge text (optional)",
+      "info": "e.g. New, SS26, Limited"
+    },
+    {
+      "type": "header",
+      "content": "Copy"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Drop Highlight"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description (overrides product description)"
+    },
+    {
+      "type": "text",
+      "id": "detail_1",
+      "label": "Detail 1",
+      "default": "100% heavy cotton, 280gsm"
+    },
+    {
+      "type": "text",
+      "id": "detail_2",
+      "label": "Detail 2",
+      "default": "Dropped shoulders, oversized fit"
+    },
+    {
+      "type": "text",
+      "id": "detail_3",
+      "label": "Detail 3",
+      "default": "Enzyme washed for softness"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button text",
+      "default": "Shop This Piece"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link (if no product selected)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Spotlight",
+      "settings": {
+        "eyebrow": "Drop Highlight",
+        "detail_1": "100% heavy cotton, 280gsm",
+        "detail_2": "Dropped shoulders, oversized fit",
+        "detail_3": "Enzyme washed for softness",
+        "cta_label": "Shop This Piece"
+      }
+    }
+  ]
+}
+{% endschema %}
