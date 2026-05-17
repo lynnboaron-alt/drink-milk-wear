@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRINK MILK — Theme Preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="theme/assets/theme.css">
+
+  <style>
+    /* Preview-only overrides — simulate Shopify image placeholders with brand colors */
+    .ph { display:flex; align-items:center; justify-content:center; width:100%; height:100%; }
+    .ph span { font-family:var(--font-body); font-size:0.5rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; opacity:0.25; }
+  </style>
+</head>
+<body>
+
+<!-- ── Announcement bar ──────────────────────────────── -->
+<div class="announcement-bar">
+  New drop · Oversized essentials · Free shipping over ₪450
+</div>
+
+<!-- ── Header ────────────────────────────────────────── -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <button class="menu-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="#" class="header-logo">DRINK MILK</a>
+      <div class="header-actions">
+        <a href="#" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+        </a>
+        <button data-cart-trigger aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ── Mobile nav ────────────────────────────────────── -->
+<div class="nav-overlay" id="nav-overlay"></div>
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="#">Shop</a>
+  <a href="#">Lookbook</a>
+  <a href="#">About</a>
+</nav>
+
+<!-- ── Cart drawer ───────────────────────────────────── -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer">
+  <div class="cart-header">
+    <p class="cart-title">Your Bag (0)</p>
+    <button class="cart-close" id="cart-close">✕</button>
+  </div>
+  <div class="cart-body">
+    <p class="cart-empty">Your bag is empty.</p>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Subtotal</span>
+      <span class="cart-subtotal-price">₪0</span>
+    </div>
+    <a href="#" class="cart-checkout-btn">Checkout</a>
+  </div>
+</aside>
+
+<main class="page-wrap">
+
+<!-- ── 1. Hero ───────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-media">
+    <div class="ph" style="background:var(--forest);">
+      <span style="color:rgba(205,227,246,1);">Campaign Image</span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <a href="#" class="btn btn-burgundy">Shop the Drop</a>
+  </div>
+</section>
+
+<!-- ── 2. Brand statement ─────────────────────────────── -->
+<section class="section-brand-statement">
+  <div class="container">
+    <p class="brand-statement-label" data-animate>DRINK MILK — EST. 2026</p>
+    <div class="t-editorial" data-animate data-animate-delay="1">
+      Wear it loose.<br><em>Live it loud.</em>
+    </div>
+    <p class="brand-statement-body" data-animate data-animate-delay="2">
+      Oversized essentials for little boys. Ages 1–6.<br>
+      Built to move, dressed to stand out.
+    </p>
+    <a href="#" class="btn btn-burgundy" data-animate data-animate-delay="3">Shop the Drop</a>
+  </div>
+</section>
+
+<!-- ── 3. Collection banner ───────────────────────────── -->
+<section class="section-collection-banner">
+  <p class="collection-banner-title" data-animate>
+    SS26 — <em>Now available</em>
+  </p>
+  <a href="#" class="collection-banner-link" data-animate data-animate-delay="1">
+    Explore Collection
+  </a>
+</section>
+
+<!-- ── 4. Featured products ──────────────────────────── -->
+<section class="section-products">
+  <div class="container">
+    <div class="products-header">
+      <p class="products-header-label">Best Sellers</p>
+      <a href="#" class="products-header-link">View All</a>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-grid-item" data-animate>
+        <a href="#" class="product-grid-media" style="background:var(--burgundy);">
+          <div class="ph"><span style="color:var(--cream);">Product Image</span></div>
+        </a>
+        <p class="product-grid-category">Tops · Ages 1–2</p>
+        <a href="#" class="product-grid-title">Burgundy Oversized Tee</a>
+        <div class="product-grid-bottom">
+          <span class="product-grid-price">₪159</span>
+          <button class="product-grid-add">Add</button>
+        </div>
+      </div>
+
+      <div class="product-grid-item" data-animate data-animate-delay="1">
+        <a href="#" class="product-grid-media" style="background:var(--forest);">
+          <div class="ph"><span style="color:var(--cream);">Product Image</span></div>
+        </a>
+        <p class="product-grid-category">Pants · Ages 3–4</p>
+        <a href="#" class="product-grid-title">Forest Wide-Leg Pants</a>
+        <div class="product-grid-bottom">
+          <span class="product-grid-price">₪199</span>
+          <button class="product-grid-add">Add</button>
+        </div>
+      </div>
+
+      <div class="product-grid-item" data-animate data-animate-delay="2">
+        <a href="#" class="product-grid-media" style="background:var(--cream);border:1px solid var(--border);">
+          <div class="ph"><span>Product Image</span></div>
+        </a>
+        <p class="product-grid-category">Tops · Ages 2–3</p>
+        <a href="#" class="product-grid-title">Cream Balloon Tee</a>
+        <div class="product-grid-bottom">
+          <span class="product-grid-price">₪159</span>
+          <button class="product-grid-add">Add</button>
+        </div>
+      </div>
+
+      <div class="product-grid-item" data-animate data-animate-delay="3">
+        <a href="#" class="product-grid-media" style="background:var(--sky);">
+          <div class="ph"><span>Product Image</span></div>
+        </a>
+        <p class="product-grid-category">Pants · Ages 5–6</p>
+        <a href="#" class="product-grid-title">Washed Blue Wide Pants</a>
+        <div class="product-grid-bottom">
+          <span class="product-grid-price">₪199</span>
+          <button class="product-grid-add">Add</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── 5. Marquee ────────────────────────────────────── -->
+<div class="marquee-bar" style="background:var(--terracotta);">
+  <div class="marquee-track">
+    <span style="color:var(--cream);">Drink Milk</span>
+    <span style="color:var(--cream);">Drink Milk</span>
+    <span style="color:var(--cream);">Drink Milk</span>
+    <span style="color:var(--cream);">Drink Milk</span>
+    <span style="color:var(--cream);">Drink Milk</span>
+    <span style="color:var(--cream);">Drink Milk</span>
+    <span style="color:var(--cream);">Drink Milk</span>
+    <span style="color:var(--cream);">Drink Milk</span>
+  </div>
+</div>
+
+<!-- ── 6. Editorial band ──────────────────────────────── -->
+<section class="section-editorial">
+  <div class="container">
+    <p class="editorial-label" data-animate>The Drink Milk Way</p>
+    <div class="editorial-split-desktop">
+      <div>
+        <h2 class="editorial-headline" data-animate data-animate-delay="1">
+          Raised wild,<br><em>dressed good.</em>
+        </h2>
+        <p class="editorial-body" data-animate data-animate-delay="2">
+          Every piece is made for the kid who runs before he walks.<br>
+          Oversized. Comfortable. Effortlessly cool.
+        </p>
+        <a href="#" class="btn btn-outline-cream" data-animate data-animate-delay="3">Shop Now</a>
+      </div>
+      <div class="editorial-image" data-animate data-animate-delay="2">
+        <div class="ph" style="background:var(--forest);height:100%;min-height:300px;">
+          <span style="color:rgba(205,227,246,0.4);">Campaign Image</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 7. Drop split ──────────────────────────────────── -->
+<section class="drop-split">
+
+  <a href="#" class="drop-split-panel">
+    <div class="drop-split-panel-media">
+      <div class="ph" style="background:#1a2e1d;position:absolute;inset:0;">
+        <span style="color:rgba(205,227,246,0.2);">Tops Campaign Image</span>
+      </div>
+    </div>
+    <div class="drop-split-panel-overlay"></div>
+    <div class="drop-split-panel-content">
+      <p class="drop-split-panel-label">SS26</p>
+      <p class="drop-split-panel-name">Tops</p>
+      <span class="btn btn-outline-cream" style="pointer-events:none;">Shop Tops</span>
+    </div>
+  </a>
+
+  <a href="#" class="drop-split-panel">
+    <div class="drop-split-panel-media">
+      <div class="ph" style="background:#5a1f18;position:absolute;inset:0;">
+        <span style="color:rgba(249,245,230,0.2);">Pants Campaign Image</span>
+      </div>
+    </div>
+    <div class="drop-split-panel-overlay"></div>
+    <div class="drop-split-panel-content">
+      <p class="drop-split-panel-label">SS26</p>
+      <p class="drop-split-panel-name">Pants</p>
+      <span class="btn btn-outline-cream" style="pointer-events:none;">Shop Pants</span>
+    </div>
+  </a>
+
+</section>
+
+<!-- ── 8. Founder band ────────────────────────────────── -->
+<section class="section-founder">
+  <div class="founder-media">
+    <div class="ph" style="background:var(--sky);min-height:280px;">
+      <span>Founder Photo</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── 9. Story quote ─────────────────────────────────── -->
+<section class="section-story">
+  <div class="container">
+    <p class="story-label" data-animate>Our Story</p>
+    <blockquote class="story-quote" data-animate data-animate-delay="1">
+      "I wanted clothes cool enough that adults would wear them too —
+      built for kids who refuse to go unnoticed."
+    </blockquote>
+    <p class="story-attribution" data-animate data-animate-delay="2">Founder, Drink Milk</p>
+  </div>
+</section>
+
+<!-- ── 10. Newsletter ─────────────────────────────────── -->
+<section class="section-newsletter">
+  <h2 class="newsletter-title" data-animate>Made for milk lovers.</h2>
+  <p class="newsletter-sub" data-animate data-animate-delay="1">
+    Be the first to know about new collections and exclusive offers.
+  </p>
+  <div class="newsletter-form" data-animate data-animate-delay="2">
+    <input class="newsletter-input" type="email" placeholder="Email">
+    <button class="newsletter-btn">→</button>
+  </div>
+</section>
+
+<!-- ── Footer ─────────────────────────────────────────── -->
+<footer class="site-footer">
+  <div class="footer-inner container">
+    <p class="footer-logo">DRINK MILK</p>
+    <nav class="footer-links-row">
+      <a href="#">Shipping</a>
+      <a href="#">Returns</a>
+      <a href="#">Contact</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+    <div class="footer-social">
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p class="footer-copy">© 2026 Drink Milk. All rights reserved.</p>
+  </div>
+</footer>
+
+</main>
+
+<script src="theme/assets/theme.js"></script>
+</body>
+</html>
