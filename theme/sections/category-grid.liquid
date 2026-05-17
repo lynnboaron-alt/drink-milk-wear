@@ -1,0 +1,89 @@
+<!-- Category grid: 2×2 rounded color cards (Tops / Pants / Sets / All) -->
+<section class="section-categories">
+  <div class="container">
+
+    {%- if section.settings.label != blank -%}
+      <p class="categories-label" data-animate>{{ section.settings.label }}</p>
+    {%- endif -%}
+
+    <div class="category-grid">
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ block.settings.url }}"
+          class="category-card bg-{{ block.settings.bg_color }}"
+          data-animate
+          data-animate-delay="{{ forloop.index }}"
+          {{ block.shopify_attributes }}
+        >
+          <p class="category-card-name">{{ block.settings.name }}</p>
+          <p class="category-card-sub">{{ block.settings.subtitle }}</p>
+        </a>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Category Grid",
+  "tag": "section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label",
+      "default": "Shop by Category"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Category name",
+          "default": "Tops"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "4 Styles"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "bg_color",
+          "label": "Background color",
+          "options": [
+            { "value": "burgundy", "label": "Burgundy" },
+            { "value": "cream",    "label": "Cream" },
+            { "value": "forest",   "label": "Forest green" },
+            { "value": "sky",      "label": "Sky blue" }
+          ],
+          "default": "burgundy"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Category Grid",
+      "blocks": [
+        { "type": "category", "settings": { "name": "Tops",  "subtitle": "4 Styles",    "bg_color": "burgundy" } },
+        { "type": "category", "settings": { "name": "Pants", "subtitle": "4 Styles",    "bg_color": "cream"    } },
+        { "type": "category", "settings": { "name": "Sets",  "subtitle": "Coming Soon", "bg_color": "forest"   } },
+        { "type": "category", "settings": { "name": "All",   "subtitle": "8 Pieces",    "bg_color": "sky"      } }
+      ]
+    }
+  ]
+}
+{% endschema %}

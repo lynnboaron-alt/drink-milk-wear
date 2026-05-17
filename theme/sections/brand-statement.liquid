@@ -1,0 +1,67 @@
+<!-- Brand statement: cream section, serif editorial headline, body copy, CTA -->
+<section class="section-brand-statement">
+  <div class="container">
+
+    <p class="brand-statement-label" data-animate>
+      {{ section.settings.label }}
+    </p>
+
+    <div class="t-editorial" data-animate data-animate-delay="1">
+      {{ section.settings.headline }}
+    </div>
+
+    {%- if section.settings.body != blank -%}
+      <p class="brand-statement-body" data-animate data-animate-delay="2">
+        {{ section.settings.body }}
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.cta_label != blank -%}
+      <a href="{{ section.settings.cta_url }}" class="btn btn-burgundy" data-animate data-animate-delay="3">
+        {{ section.settings.cta_label }}
+      </a>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand Statement",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Eyebrow label",
+      "default": "DRINK MILK — EST. 2026"
+    },
+    {
+      "type": "richtext",
+      "id": "headline",
+      "label": "Headline (use <em> for italic in burgundy)",
+      "default": "<p>Wear it loose.<br><em>Live it loud.</em></p>"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "Oversized essentials for little boys. Ages 1–6.\nBuilt to move, dressed to stand out."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop the Drop"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    { "name": "Brand Statement" }
+  ]
+}
+{% endschema %}

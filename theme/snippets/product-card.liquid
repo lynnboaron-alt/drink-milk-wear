@@ -1,0 +1,52 @@
+<!-- Product card: image + category label + title + price + add button -->
+<div class="product-grid-item">
+  <a href="{{ product.url }}" class="product-grid-media" aria-label="{{ product.title }}">
+    {%- if product.featured_image -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 600 }}"
+        srcset="{{ product.featured_image | image_url: width: 400 }} 400w,
+                {{ product.featured_image | image_url: width: 600 }} 600w"
+        sizes="(max-width: 600px) 50vw, 25vw"
+        alt="{{ product.featured_image.alt | default: product.title }}"
+        width="{{ product.featured_image.width }}"
+        height="{{ product.featured_image.height }}"
+        loading="lazy"
+      >
+    {%- else -%}
+      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:0.5rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(38,66,43,0.3);font-family:var(--font-body);">Product Image</span>
+      </div>
+    {%- endif -%}
+  </a>
+
+  {%- assign product_type = product.type | default: product.tags.first -%}
+  {%- assign age_tag = '' -%}
+  {%- for tag in product.tags -%}
+    {%- if tag contains 'ages' or tag contains 'age' -%}
+      {%- assign age_tag = tag -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  <p class="product-grid-category">
+    {%- if product_type != blank -%}{{ product_type }}{%- endif -%}
+    {%- if age_tag != blank -%} · {{ age_tag }}{%- endif -%}
+  </p>
+
+  <a href="{{ product.url }}" class="product-grid-title">{{ product.title }}</a>
+
+  <div class="product-grid-bottom">
+    <span class="product-grid-price">
+      {%- if product.compare_at_price > product.price -%}
+        <s>{{ product.compare_at_price | money }}</s>
+      {%- endif -%}
+      {{ product.price | money }}
+    </span>
+    <button
+      class="product-grid-add"
+      data-product-id="{{ product.variants.first.id }}"
+      aria-label="Add {{ product.title }} to cart"
+    >
+      Add
+    </button>
+  </div>
+</div>

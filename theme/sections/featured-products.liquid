@@ -1,0 +1,77 @@
+<!-- Featured products: cream bg, 2-col mobile / 4-col desktop grid -->
+<section class="section-products">
+  <div class="container">
+
+    <div class="products-header">
+      <p class="products-header-label">{{ section.settings.label }}</p>
+      {%- if section.settings.view_all_label != blank -%}
+        <a href="{{ section.settings.collection.url }}" class="products-header-link">
+          {{ section.settings.view_all_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- assign products_to_show = section.settings.collection.products | default: section.settings.products -%}
+
+    <div class="product-grid">
+      {%- if section.settings.collection != blank -%}
+        {%- for product in section.settings.collection.products limit: section.settings.products_count -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          <div class="product-grid-item">
+            <div class="product-grid-media" style="background: var(--sky); aspect-ratio:3/4; border-radius:6px; display:flex; align-items:center; justify-content:center;">
+              <span style="font-size:0.5rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:rgba(38,66,43,0.3); font-family:var(--font-body);">Product Image</span>
+            </div>
+            <p class="product-grid-category">Tops · Ages 1–2</p>
+            <p class="product-grid-title">Oversized Tee</p>
+            <div class="product-grid-bottom">
+              <span class="product-grid-price">₪159</span>
+              <button class="product-grid-add">Add</button>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Products",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "View all text",
+      "default": "View All"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_count",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "label": "Products to show",
+      "default": 4
+    }
+  ],
+  "presets": [
+    { "name": "Featured Products" }
+  ]
+}
+{% endschema %}

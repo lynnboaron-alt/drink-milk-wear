@@ -1,0 +1,125 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "cta_label": "SS26 Collection",
+        "cta_url": "/collections/all"
+      }
+    },
+    "brand_statement": {
+      "type": "brand-statement",
+      "settings": {
+        "label": "DRINK MILK — EST. 2026",
+        "headline": "<p>Wear it loose.<br><em>Live it loud.<\/em><\/p>",
+        "body": "Oversized essentials for little boys. Ages 1–6.\nBuilt to move, dressed to stand out.",
+        "cta_label": "Shop the Drop",
+        "cta_url": "/collections/all"
+      }
+    },
+    "collection_banner": {
+      "type": "collection-banner",
+      "settings": {
+        "title": "SS26 — <em>Now available<\/em>",
+        "link_label": "Explore Collection",
+        "link_url": "/collections/all"
+      }
+    },
+    "featured_products": {
+      "type": "featured-products",
+      "settings": {
+        "label": "Best Sellers",
+        "view_all_label": "View All",
+        "products_count": 4
+      }
+    },
+    "editorial_band": {
+      "type": "editorial-band",
+      "settings": {
+        "label": "The Drink Milk Way",
+        "headline": "Raised wild,\n<em>dressed good.<\/em>",
+        "body": "Every piece is made for the kid who runs before he walks. Oversized. Comfortable. Effortlessly cool.",
+        "cta_label": "Shop Now",
+        "cta_url": "/collections/all"
+      }
+    },
+    "category_grid": {
+      "type": "category-grid",
+      "settings": {
+        "label": "Shop by Category"
+      },
+      "blocks": {
+        "tops": {
+          "type": "category",
+          "settings": {
+            "name": "Tops",
+            "subtitle": "4 Styles",
+            "bg_color": "burgundy",
+            "url": "/collections/tops"
+          }
+        },
+        "pants": {
+          "type": "category",
+          "settings": {
+            "name": "Pants",
+            "subtitle": "4 Styles",
+            "bg_color": "cream",
+            "url": "/collections/pants"
+          }
+        },
+        "sets": {
+          "type": "category",
+          "settings": {
+            "name": "Sets",
+            "subtitle": "Coming Soon",
+            "bg_color": "forest",
+            "url": "/collections/sets"
+          }
+        },
+        "all": {
+          "type": "category",
+          "settings": {
+            "name": "All",
+            "subtitle": "8 Pieces",
+            "bg_color": "sky",
+            "url": "/collections/all"
+          }
+        }
+      },
+      "block_order": ["tops", "pants", "sets", "all"]
+    },
+    "founder_band": {
+      "type": "founder-band",
+      "settings": {
+        "placeholder_text": "Founder Photo"
+      }
+    },
+    "story_quote": {
+      "type": "story-quote",
+      "settings": {
+        "label": "Our Story",
+        "quote": "I wanted clothes cool enough that adults would wear them too — built for kids who refuse to go unnoticed.",
+        "attribution": "Founder, Drink Milk"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "title": "Made for milk lovers.",
+        "subtitle": "Be the first to know about new collections and exclusive offers.",
+        "placeholder": "Email"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "brand_statement",
+    "collection_banner",
+    "featured_products",
+    "editorial_band",
+    "category_grid",
+    "founder_band",
+    "story_quote",
+    "newsletter"
+  ]
+}

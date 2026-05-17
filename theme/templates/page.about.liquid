@@ -1,0 +1,69 @@
+<!-- About page -->
+
+<!-- Hero -->
+<section class="about-hero">
+  <div class="about-hero-media">
+    {%- if page.metafields.custom.hero_image != blank -%}
+      <img src="{{ page.metafields.custom.hero_image | image_url: width: 1600 }}" alt="About Drink Milk" loading="eager">
+    {%- endif -%}
+  </div>
+  <div class="about-hero-content container">
+    <p class="editorial-label">EST. 2026</p>
+    <h1 class="editorial-headline">Raised wild,<br><em>dressed good.</em></h1>
+  </div>
+</section>
+
+<!-- Mission statement -->
+<section style="background:var(--cream);padding:clamp(3.5rem,9vw,8rem) var(--gap);text-align:center;">
+  <div style="max-width:680px;margin-inline:auto;">
+    <p style="font-family:var(--font-body);font-size:0.5625rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid-cream);margin-bottom:1.75rem;" data-animate>
+      What we stand for
+    </p>
+    <p class="t-editorial" style="color:var(--forest);margin-bottom:2rem;" data-animate data-animate-delay="1">
+      Mini fashion pieces.<br><em>Maximum attitude.</em>
+    </p>
+    <p style="font-family:var(--font-body);font-size:0.9375rem;color:var(--mid-cream);line-height:1.75;max-width:52ch;margin-inline:auto;" data-animate data-animate-delay="2">
+      DRINK MILK was born from the belief that kids deserve clothes as cool as their personality. Oversized silhouettes, premium cotton, and dropped shoulders — built for little boys who move through the world like they own it.
+    </p>
+  </div>
+</section>
+
+<!-- Values -->
+<section style="padding-inline:var(--gap);padding-bottom:clamp(3rem,7vw,6rem);background:var(--cream);">
+  <div class="container">
+    <div class="values-grid">
+      <div class="value-item" data-animate>
+        <p class="value-number">01</p>
+        <h3>Oversized by design</h3>
+        <p>Every piece starts with the silhouette. Wide, relaxed, generous — because clothes should move with kids, not restrict them.</p>
+      </div>
+      <div class="value-item" data-animate data-animate-delay="1">
+        <p class="value-number">02</p>
+        <h3>Premium materials</h3>
+        <p>Heavy cotton. Enzyme-washed finishes. Fabrics that feel like they cost more than they do — because your kid notices quality.</p>
+      </div>
+      <div class="value-item" data-animate data-animate-delay="2">
+        <p class="value-number">03</p>
+        <h3>Fashion-first</h3>
+        <p>We don't design for the kids' section. We design for little people who have a point of view, a sense of self, and something to say.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Founder quote -->
+<section class="section-story">
+  <div class="container">
+    <p class="story-label" data-animate>Our Story</p>
+    <blockquote class="story-quote" data-animate data-animate-delay="1">
+      "I wanted clothes cool enough that adults would wear them too — built for kids who refuse to go unnoticed."
+    </blockquote>
+    <p class="story-attribution" data-animate data-animate-delay="2">Founder, Drink Milk</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section-collection-banner">
+  <p class="collection-banner-title">The full collection is <em>here.</em></p>
+  <a href="/collections/all" class="collection-banner-link">Shop Everything</a>
+</section>

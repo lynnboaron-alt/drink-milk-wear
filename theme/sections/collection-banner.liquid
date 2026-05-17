@@ -1,0 +1,40 @@
+<!-- Collection banner: forest green full-width band, large serif title, explore link -->
+<section class="section-collection-banner">
+  <p class="collection-banner-title" data-animate>
+    {{ section.settings.title }}
+  </p>
+  {%- if section.settings.link_label != blank -%}
+    <a href="{{ section.settings.link_url }}" class="collection-banner-link" data-animate data-animate-delay="1">
+      {{ section.settings.link_label }}
+    </a>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Collection Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title (use HTML em for italic)",
+      "default": "SS26 — <em>Now available</em>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link text",
+      "default": "Explore Collection"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    }
+  ],
+  "presets": [
+    { "name": "Collection Banner" }
+  ]
+}
+{% endschema %}

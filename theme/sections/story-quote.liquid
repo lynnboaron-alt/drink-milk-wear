@@ -1,0 +1,48 @@
+<!-- Story / founder quote: cream, italic serif, attribution -->
+<section class="section-story">
+  <div class="container">
+
+    {%- if section.settings.label != blank -%}
+      <p class="story-label" data-animate>{{ section.settings.label }}</p>
+    {%- endif -%}
+
+    <blockquote class="story-quote" data-animate data-animate-delay="1">
+      "{{ section.settings.quote }}"
+    </blockquote>
+
+    {%- if section.settings.attribution != blank -%}
+      <p class="story-attribution" data-animate data-animate-delay="2">{{ section.settings.attribution }}</p>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story Quote",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section label",
+      "default": "Our Story"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "I wanted clothes cool enough that adults would wear them too — built for kids who refuse to go unnoticed."
+    },
+    {
+      "type": "text",
+      "id": "attribution",
+      "label": "Attribution",
+      "default": "Founder, Drink Milk"
+    }
+  ],
+  "presets": [
+    { "name": "Story Quote" }
+  ]
+}
+{% endschema %}

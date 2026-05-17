@@ -1,0 +1,41 @@
+<!-- Founder band: full-width sky blue image placeholder -->
+<section class="section-founder">
+  <div class="founder-media">
+    {%- if section.settings.image != blank -%}
+      <img
+        src="{{ section.settings.image | image_url: width: 1600 }}"
+        srcset="{{ section.settings.image | image_url: width: 800 }} 800w,
+                {{ section.settings.image | image_url: width: 1200 }} 1200w,
+                {{ section.settings.image | image_url: width: 1600 }} 1600w"
+        sizes="100vw"
+        alt="{{ section.settings.image.alt | default: 'Founder photo' }}"
+        loading="lazy"
+      >
+    {%- else -%}
+      <p class="founder-placeholder">{{ section.settings.placeholder_text }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Founder Band",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Founder / campaign photo"
+    },
+    {
+      "type": "text",
+      "id": "placeholder_text",
+      "label": "Placeholder label",
+      "default": "Founder Photo"
+    }
+  ],
+  "presets": [
+    { "name": "Founder Band" }
+  ]
+}
+{% endschema %}

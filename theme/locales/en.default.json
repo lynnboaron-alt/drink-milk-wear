@@ -1,0 +1,45 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_label": "Email",
+      "signup_form_success": "Thanks! We'll let you know when we launch."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Bag",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": {
+        "label": "Quantity"
+      }
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Bag",
+      "empty": "Your bag is empty.",
+      "checkout": "Checkout",
+      "subtotal": "Subtotal",
+      "item_count": {
+        "one": "1 item",
+        "other": "{{ count }} items"
+      }
+    }
+  },
+  "sections": {
+    "header": {
+      "menu": "Menu",
+      "cart": "Bag",
+      "search": "Search",
+      "account": "Account"
+    },
+    "newsletter": {
+      "success": "You're in. Welcome to the family."
+    }
+  }
+}

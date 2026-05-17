@@ -1,0 +1,95 @@
+<!-- Editorial band: burgundy section, "Raised wild, dressed good." energy -->
+<section class="section-editorial">
+  <div class="container">
+
+    {%- if section.settings.label != blank -%}
+      <p class="editorial-label" data-animate>{{ section.settings.label }}</p>
+    {%- endif -%}
+
+    <div class="editorial-split-desktop">
+
+      <div>
+        <h2 class="editorial-headline" data-animate data-animate-delay="1">
+          {{ section.settings.headline }}
+        </h2>
+
+        {%- if section.settings.body != blank -%}
+          <p class="editorial-body" data-animate data-animate-delay="2">
+            {{ section.settings.body }}
+          </p>
+        {%- endif -%}
+
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="btn btn-outline-cream" data-animate data-animate-delay="3">
+            {{ section.settings.cta_label }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.image != blank -%}
+        <div class="editorial-image" data-animate data-animate-delay="2">
+          <img
+            src="{{ section.settings.image | image_url: width: 1000 }}"
+            srcset="{{ section.settings.image | image_url: width: 600 }} 600w,
+                    {{ section.settings.image | image_url: width: 1000 }} 1000w"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            alt="{{ section.settings.image.alt | default: section.settings.headline }}"
+            loading="lazy"
+          >
+        </div>
+      {%- else -%}
+        <div class="editorial-image" style="display:flex; align-items:center; justify-content:center;" data-animate data-animate-delay="2">
+          <span style="font-size:0.5rem; font-weight:600; letter-spacing:0.22em; text-transform:uppercase; color:rgba(205,227,246,0.3); font-family:var(--font-body);">Campaign Image</span>
+        </div>
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial Band",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Eyebrow label",
+      "default": "The Drink Milk Way"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline (use <em> for italic)",
+      "default": "Raised wild,\n<em>dressed good.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "Every piece is made for the kid who runs before he walks. Oversized. Comfortable. Effortlessly cool."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    { "name": "Editorial Band" }
+  ]
+}
+{% endschema %}

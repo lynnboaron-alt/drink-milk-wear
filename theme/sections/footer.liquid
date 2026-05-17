@@ -1,0 +1,56 @@
+<!-- Footer: burgundy, minimal -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner container">
+
+    <p class="footer-logo">DRINK MILK</p>
+
+    <nav class="footer-links-row" aria-label="Footer navigation">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="footer-social">
+      {%- if section.settings.instagram != blank -%}
+        <a href="{{ section.settings.instagram }}" target="_blank" rel="noopener">Instagram</a>
+      {%- endif -%}
+      {%- if section.settings.tiktok != blank -%}
+        <a href="{{ section.settings.tiktok }}" target="_blank" rel="noopener">TikTok</a>
+      {%- endif -%}
+    </div>
+
+  </div>
+
+  <div class="footer-bottom container">
+    <p class="footer-copy">&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    <div class="payment-icons">
+      {%- for type in shop.enabled_payment_types -%}
+        {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+      {%- endfor -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Footer menu",
+      "default": "footer"
+    },
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "tiktok",
+      "label": "TikTok URL"
+    }
+  ]
+}
+{% endschema %}
