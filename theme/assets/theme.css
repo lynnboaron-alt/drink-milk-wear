@@ -404,12 +404,13 @@ input, select, textarea { font: inherit; }
   margin-bottom: 2rem;
 }
 
-/* ─── Section: Collection banner (forest green) ───────────────── */
+/* ─── Section: Collection banner ──────────────────────────────── */
 .section-collection-banner {
-  background: var(--forest);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--forest);
   text-align: center;
   padding: clamp(2.5rem, 6vw, 4rem) var(--gap);
+  border-top: 1px solid var(--border);
 }
 .collection-banner-title {
   font-family: var(--font-serif);
@@ -418,7 +419,7 @@ input, select, textarea { font: inherit; }
   line-height: 1.1;
   margin-bottom: 1.25rem;
 }
-.collection-banner-title em { font-style: italic; }
+.collection-banner-title em { font-style: italic; color: var(--terracotta); }
 
 .collection-banner-link {
   font-family: var(--font-body);
@@ -426,12 +427,12 @@ input, select, textarea { font: inherit; }
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(249, 245, 230, 0.7);
-  border-bottom: 1px solid rgba(249, 245, 230, 0.4);
+  color: var(--mid-cream);
+  border-bottom: 1px solid var(--border);
   padding-bottom: 2px;
   transition: color 0.2s, border-color 0.2s;
 }
-.collection-banner-link:hover { color: var(--cream); border-color: var(--cream); }
+.collection-banner-link:hover { color: var(--forest); border-color: var(--forest); }
 
 /* ─── Section: Products grid ──────────────────────────────────── */
 .section-products {
@@ -591,7 +592,7 @@ input, select, textarea { font: inherit; }
 .drop-split-panel-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(38,66,43,0.7) 0%, transparent 55%);
+  background: linear-gradient(to top, rgba(38,66,43,0.5) 0%, transparent 60%);
 }
 
 .drop-split-panel-content {
@@ -719,10 +720,10 @@ input, select, textarea { font: inherit; }
   background: var(--border);
 }
 
-/* ─── Section: Editorial band (burgundy) ─────────────────────── */
+/* ─── Section: Editorial band ────────────────────────────────── */
 .section-editorial {
-  background: var(--burgundy);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--forest);
   padding: clamp(3rem, 8vw, 6rem) var(--gap);
 }
 
@@ -732,7 +733,7 @@ input, select, textarea { font: inherit; }
   font-weight: 700;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(249, 245, 230, 0.5);
+  color: var(--mid-cream);
   margin-bottom: 1.5rem;
 }
 
@@ -741,16 +742,16 @@ input, select, textarea { font: inherit; }
   font-size: clamp(2.5rem, 9vw, 6rem);
   font-weight: 400;
   line-height: 1;
-  color: var(--cream);
+  color: var(--forest);
   margin-bottom: 1.5rem;
 }
-.editorial-headline em { font-style: italic; }
+.editorial-headline em { font-style: italic; color: var(--terracotta); }
 
 .editorial-body {
   font-family: var(--font-body);
   font-size: 0.9375rem;
   line-height: 1.7;
-  color: rgba(249, 245, 230, 0.65);
+  color: var(--mid-cream);
   max-width: 44ch;
   margin-bottom: 2.25rem;
 }
@@ -760,7 +761,7 @@ input, select, textarea { font: inherit; }
   aspect-ratio: 4/3;
   overflow: hidden;
   border-radius: 8px;
-  background: var(--forest);
+  background: var(--sky);
 }
 .editorial-image img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -891,10 +892,10 @@ input, select, textarea { font: inherit; }
 }
 .story-attribution::before { content: '— '; }
 
-/* ─── Section: Newsletter (burgundy) ──────────────────────────── */
+/* ─── Section: Newsletter (sky) ───────────────────────────────── */
 .section-newsletter {
-  background: var(--burgundy);
-  color: var(--cream);
+  background: var(--sky);
+  color: var(--forest);
   padding: clamp(3rem, 8vw, 6rem) var(--gap);
   text-align: center;
 }
@@ -903,7 +904,7 @@ input, select, textarea { font: inherit; }
   font-family: var(--font-serif);
   font-size: clamp(1.875rem, 6vw, 3.5rem);
   font-weight: 400;
-  color: var(--cream);
+  color: var(--forest);
   margin-bottom: 0.875rem;
   line-height: 1.1;
 }
@@ -911,7 +912,7 @@ input, select, textarea { font: inherit; }
 .newsletter-sub {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  color: rgba(249, 245, 230, 0.65);
+  color: var(--mid-cream);
   margin-bottom: 2.5rem;
   max-width: 44ch;
   margin-inline: auto;
@@ -922,36 +923,37 @@ input, select, textarea { font: inherit; }
   display: flex;
   max-width: 420px;
   margin-inline: auto;
-  border: 1.5px solid rgba(249, 245, 230, 0.45);
+  border: 1.5px solid rgba(38, 66, 43, 0.3);
   border-radius: 4px;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.5);
 }
 .newsletter-input {
   flex: 1;
   background: transparent;
   border: none;
-  color: var(--cream);
+  color: var(--forest);
   font-family: var(--font-body);
   font-size: 0.875rem;
   padding: 0.875rem 1rem;
   outline: none;
 }
-.newsletter-input::placeholder { color: rgba(249, 245, 230, 0.35); }
+.newsletter-input::placeholder { color: rgba(38, 66, 43, 0.4); }
 .newsletter-btn {
   background: transparent;
   border: none;
-  border-left: 1.5px solid rgba(249, 245, 230, 0.45);
-  color: rgba(249, 245, 230, 0.7);
+  border-left: 1.5px solid rgba(38, 66, 43, 0.3);
+  color: var(--mid-cream);
   padding: 0.875rem 1.25rem;
   font-size: 1rem;
   cursor: pointer;
   transition: color 0.2s;
 }
-.newsletter-btn:hover { color: var(--cream); }
+.newsletter-btn:hover { color: var(--forest); }
 
 /* ─── Footer ──────────────────────────────────────────────────── */
 .site-footer {
-  background: var(--burgundy);
+  background: var(--forest);
   color: var(--cream);
   border-top: 1px solid rgba(249, 245, 230, 0.1);
   padding: 2rem var(--gap) 1.5rem;
