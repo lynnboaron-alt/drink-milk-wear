@@ -2,6 +2,17 @@
 (function () {
   'use strict';
 
+  /* ── Announcement bar height → --announce-h CSS var ─── */
+  const announceBar = document.querySelector('.announcement-bar');
+  function setAnnounceH() {
+    document.documentElement.style.setProperty(
+      '--announce-h',
+      (announceBar ? announceBar.offsetHeight : 0) + 'px'
+    );
+  }
+  setAnnounceH();
+  window.addEventListener('resize', setAnnounceH, { passive: true });
+
   /* ── Header hide-on-scroll ────────────────────────────── */
   const header = document.querySelector('.site-header');
   let lastY = 0, ticking = false;

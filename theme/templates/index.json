@@ -29,8 +29,7 @@
       "type": "featured-products",
       "settings": {
         "label": "Best Sellers",
-        "view_all_label": "View All",
-        "products_count": 4
+        "view_all_label": "View All"
       }
     },
     "editorial_band": {

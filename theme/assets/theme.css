@@ -190,6 +190,9 @@ input, select, textarea { font: inherit; }
 
 /* ─── Announcement Bar ─────────────────────────────────────────── */
 .announcement-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 101;
   background: var(--burgundy);
   color: var(--cream);
   text-align: center;
@@ -204,7 +207,7 @@ input, select, textarea { font: inherit; }
 /* ─── Header ──────────────────────────────────────────────────── */
 .site-header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: var(--announce-h, 0px); left: 0; right: 0;
   z-index: 100;
   height: var(--nav-h);
   background: var(--cream);
@@ -305,7 +308,7 @@ input, select, textarea { font: inherit; }
   z-index: 150;
   transform: translateX(-100%);
   transition: transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  padding-top: var(--nav-h);
+  padding-top: calc(var(--nav-h) + var(--announce-h, 0px));
   overflow-y: auto;
   border-right: 1px solid var(--border);
 }
@@ -335,7 +338,7 @@ input, select, textarea { font: inherit; }
 .nav-overlay.open { opacity: 1; pointer-events: auto; }
 
 /* ─── Page offset ──────────────────────────────────────────────── */
-.page-wrap { padding-top: var(--nav-h); }
+.page-wrap { padding-top: calc(var(--nav-h) + var(--announce-h, 0px)); }
 
 /* ─── Hero section ─────────────────────────────────────────────── */
 .hero {

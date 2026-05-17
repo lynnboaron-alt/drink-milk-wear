@@ -1,4 +1,4 @@
-<!-- Newsletter: burgundy section, "Made for milk lovers." -->
+<!-- Newsletter: sky blue section, "Made for milk lovers." -->
 <section class="section-newsletter">
 
   <h2 class="newsletter-title" data-animate>{{ section.settings.title }}</h2>
@@ -21,7 +21,7 @@
       <button class="newsletter-btn" type="submit" aria-label="Subscribe">→</button>
     </div>
     {%- if form.posted_successfully? -%}
-      <p style="color:rgba(249,245,230,0.7);font-size:0.75rem;margin-top:1rem;letter-spacing:0.1em;font-family:var(--font-body);">
+      <p style="color:var(--mid-cream);font-size:0.75rem;margin-top:1rem;letter-spacing:0.1em;font-family:var(--font-body);">
         {{ section.settings.success_message }}
       </p>
     {%- endif -%}
@@ -32,7 +32,6 @@
 {% schema %}
 {
   "name": "Newsletter",
-  "tag": "section",
   "settings": [
     {
       "type": "text",
