@@ -436,14 +436,14 @@ input, select, textarea { font: inherit; }
 /* ─── Section: Products grid ──────────────────────────────────── */
 .section-products {
   background: var(--cream);
-  padding: clamp(2.5rem, 6vw, 5rem) var(--gap);
+  padding: clamp(3rem, 7vw, 6rem) var(--gap);
 }
 
 .products-header {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 1.75rem;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
 .products-header-label {
@@ -464,36 +464,40 @@ input, select, textarea { font: inherit; }
   color: var(--burgundy);
   border-bottom: 1px solid var(--burgundy);
   padding-bottom: 1px;
+  transition: opacity 0.2s;
 }
+.products-header-link:hover { opacity: 0.65; }
 
-/* Product list grid: 2-col mobile, 4-col desktop */
+/*
+  Editorial product grid:
+  — Desktop: 2 columns, big images, breathing room
+  — Mobile:  1 column, full-width editorial scroll
+  The drop is small and curated. Every product gets space.
+*/
 .product-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  border-top: 1px solid var(--border);
-  border-left: 1px solid var(--border);
+  gap: clamp(2rem, 4vw, 3.5rem) clamp(1rem, 3vw, 2.5rem);
 }
 
 .product-grid-item {
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 1.25rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
 }
 
 .product-grid-media {
   aspect-ratio: 3/4;
   overflow: hidden;
   background: var(--sky);
-  margin-bottom: 0.875rem;
-  border-radius: 6px;
+  margin-bottom: 1.25rem;
+  border-radius: 4px;
+  display: block;
 }
 .product-grid-media img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
 }
 .product-grid-item:hover .product-grid-media img { transform: scale(1.04); }
 
@@ -501,17 +505,19 @@ input, select, textarea { font: inherit; }
   font-family: var(--font-body);
   font-size: 0.5rem;
   font-weight: 700;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--mid-cream);
+  margin-bottom: 0.375rem;
 }
 
 .product-grid-title {
   font-family: var(--font-serif);
-  font-size: 1.0625rem;
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
   font-weight: 400;
   color: var(--forest);
-  line-height: 1.25;
+  line-height: 1.2;
+  margin-bottom: 0.625rem;
 }
 
 .product-grid-bottom {
@@ -520,7 +526,7 @@ input, select, textarea { font: inherit; }
   justify-content: space-between;
   margin-top: auto;
   padding-top: 0.75rem;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .product-grid-price {
@@ -528,6 +534,11 @@ input, select, textarea { font: inherit; }
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--forest);
+}
+.product-grid-price s {
+  color: var(--mid-cream);
+  font-weight: 400;
+  margin-right: 0.375rem;
 }
 
 .product-grid-add {
@@ -537,8 +548,8 @@ input, select, textarea { font: inherit; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--forest);
-  border: 1.5px solid rgba(38, 66, 43, 0.35);
-  padding: 0.4rem 0.75rem;
+  border: 1.5px solid rgba(38, 66, 43, 0.28);
+  padding: 0.5rem 1rem;
   border-radius: 3px;
   cursor: pointer;
   background: transparent;
@@ -549,6 +560,163 @@ input, select, textarea { font: inherit; }
   background: var(--forest);
   color: var(--cream);
   border-color: var(--forest);
+}
+
+/* ─── Editorial Drop Split (Tops / Pants as full sections) ─────── */
+.drop-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+}
+
+.drop-split-panel {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.drop-split-panel-media {
+  position: absolute;
+  inset: 0;
+}
+.drop-split-panel-media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.drop-split-panel:hover .drop-split-panel-media img { transform: scale(1.04); }
+
+.drop-split-panel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(38,66,43,0.7) 0%, transparent 55%);
+}
+
+.drop-split-panel-content {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  color: var(--cream);
+}
+
+.drop-split-panel-label {
+  font-family: var(--font-body);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(249, 245, 230, 0.6);
+  margin-bottom: 0.625rem;
+}
+
+.drop-split-panel-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+}
+
+/* Vertical divider between panels */
+.drop-split-panel:first-child {
+  border-right: 1px solid rgba(249, 245, 230, 0.2);
+}
+
+/* ─── Homepage featured — 2×2 editorial grid ──────────────────── */
+.featured-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* ─── Collection page — no filter bar, editorial header ───────── */
+.collection-intro {
+  background: var(--cream);
+  padding: clamp(2rem, 5vw, 4rem) var(--gap) clamp(1.5rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.collection-intro-left .collection-intro-label {
+  font-family: var(--font-body);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid-cream);
+  margin-bottom: 0.75rem;
+}
+
+.collection-intro-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 400;
+  color: var(--forest);
+  line-height: 1;
+}
+.collection-intro-title em { font-style: italic; color: var(--burgundy); }
+
+.collection-intro-right {
+  text-align: right;
+}
+.collection-intro-count {
+  font-family: var(--font-body);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid-cream);
+  margin-bottom: 0.375rem;
+}
+.collection-intro-desc {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--mid-cream);
+  max-width: 32ch;
+  line-height: 1.6;
+}
+
+/* ─── Collection editorial grid (2-col desktop, 1-col mobile) ─── */
+.collection-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(2rem, 5vw, 4rem) var(--gap);
+}
+
+/* Staggered offset on alternating items for editorial feel */
+.collection-editorial-grid .product-grid-item:nth-child(even) {
+  padding-top: clamp(2rem, 5vw, 4rem);
+}
+
+/* ─── Category divider within collection ───────────────────────── */
+.collection-category-divider {
+  grid-column: 1 / -1;
+  padding-block: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.collection-category-divider-label {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 400;
+  color: var(--forest);
+}
+
+.collection-category-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
 }
 
 /* ─── Section: Editorial band (burgundy) ─────────────────────── */
@@ -1360,16 +1528,26 @@ input, select, textarea { font: inherit; }
 }
 
 @media (max-width: 600px) {
-  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  /* On mobile, product grid is 1 column — full width, editorial scroll */
+  .product-grid { grid-template-columns: 1fr; }
+  .collection-editorial-grid { grid-template-columns: 1fr; }
+  /* Remove stagger on mobile */
+  .collection-editorial-grid .product-grid-item:nth-child(even) { padding-top: 0; }
+  .featured-2x2 { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .drop-split { grid-template-columns: 1fr; }
+  .drop-split-panel { min-height: 60vw; }
+  .drop-split-panel:first-child { border-right: none; border-bottom: 1px solid rgba(249,245,230,0.2); }
   .editorial-image { margin-top: 1.5rem; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .look-side { gap: 0.375rem; }
   .look-row { grid-template-columns: 1fr; }
   .look-row .look-card:last-child { display: block; }
+  .collection-intro { flex-direction: column; align-items: flex-start; }
+  .collection-intro-right { text-align: left; }
 }
 
 @media (min-width: 768px) {
-  .product-grid { grid-template-columns: repeat(4, 1fr); }
+  /* Desktop: 2-col for collection/featured, editorial stagger active */
   .category-grid { grid-template-columns: repeat(2, 1fr); }
   .editorial-split-desktop {
     display: grid;

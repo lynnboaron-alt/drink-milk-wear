@@ -3,7 +3,7 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "cta_label": "SS26 Collection",
+        "cta_label": "Shop the Drop",
         "cta_url": "/collections/all"
       }
     },
@@ -43,50 +43,31 @@
         "cta_url": "/collections/all"
       }
     },
-    "category_grid": {
-      "type": "category-grid",
-      "settings": {
-        "label": "Shop by Category"
-      },
+    "drop_split": {
+      "type": "drop-split",
       "blocks": {
         "tops": {
-          "type": "category",
+          "type": "panel",
           "settings": {
+            "eyebrow": "SS26",
             "name": "Tops",
-            "subtitle": "4 Styles",
-            "bg_color": "burgundy",
+            "cta": "Shop Tops",
+            "placeholder_bg": "#26422B",
             "url": "/collections/tops"
           }
         },
         "pants": {
-          "type": "category",
+          "type": "panel",
           "settings": {
+            "eyebrow": "SS26",
             "name": "Pants",
-            "subtitle": "4 Styles",
-            "bg_color": "cream",
+            "cta": "Shop Pants",
+            "placeholder_bg": "#71271F",
             "url": "/collections/pants"
-          }
-        },
-        "sets": {
-          "type": "category",
-          "settings": {
-            "name": "Sets",
-            "subtitle": "Coming Soon",
-            "bg_color": "forest",
-            "url": "/collections/sets"
-          }
-        },
-        "all": {
-          "type": "category",
-          "settings": {
-            "name": "All",
-            "subtitle": "8 Pieces",
-            "bg_color": "sky",
-            "url": "/collections/all"
           }
         }
       },
-      "block_order": ["tops", "pants", "sets", "all"]
+      "block_order": ["tops", "pants"]
     },
     "founder_band": {
       "type": "founder-band",
@@ -117,7 +98,7 @@
     "collection_banner",
     "featured_products",
     "editorial_band",
-    "category_grid",
+    "drop_split",
     "founder_band",
     "story_quote",
     "newsletter"

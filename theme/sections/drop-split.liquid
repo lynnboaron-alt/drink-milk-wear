@@ -1,0 +1,114 @@
+<!-- Drop split: two editorial panels side by side — Tops / Pants -->
+<!-- Each panel is a full-bleed image with category name and CTA -->
+<section class="drop-split" style="background:var(--forest);">
+
+  {%- for block in section.blocks -%}
+    <a href="{{ block.settings.url }}" class="drop-split-panel" {{ block.shopify_attributes }}>
+
+      <div class="drop-split-panel-media">
+        {%- if block.settings.image != blank -%}
+          <img
+            src="{{ block.settings.image | image_url: width: 1000 }}"
+            srcset="{{ block.settings.image | image_url: width: 600 }} 600w,
+                    {{ block.settings.image | image_url: width: 1000 }} 1000w"
+            sizes="50vw"
+            alt="{{ block.settings.name }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          <div style="position:absolute;inset:0;background:{{ block.settings.placeholder_bg }};display:flex;align-items:center;justify-content:center;">
+            <span style="color:rgba(249,245,230,0.2);font-size:0.5rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;font-family:var(--font-body);">Campaign Image</span>
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="drop-split-panel-overlay"></div>
+
+      <div class="drop-split-panel-content">
+        <p class="drop-split-panel-label">{{ block.settings.eyebrow }}</p>
+        <p class="drop-split-panel-name">{{ block.settings.name }}</p>
+        <span class="btn btn-outline-cream" style="pointer-events:none;">
+          {{ block.settings.cta }}
+        </span>
+      </div>
+
+    </a>
+  {%- endfor -%}
+
+</section>
+
+{% schema %}
+{
+  "name": "Drop Split",
+  "tag": "section",
+  "max_blocks": 2,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "panel",
+      "name": "Panel",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Campaign image"
+        },
+        {
+          "type": "text",
+          "id": "placeholder_bg",
+          "label": "Placeholder background color",
+          "default": "#26422B"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow label",
+          "default": "SS26"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Category name",
+          "default": "Tops"
+        },
+        {
+          "type": "text",
+          "id": "cta",
+          "label": "Button text",
+          "default": "Shop Tops"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Drop Split",
+      "blocks": [
+        {
+          "type": "panel",
+          "settings": {
+            "eyebrow": "SS26",
+            "name": "Tops",
+            "cta": "Shop Tops",
+            "placeholder_bg": "#26422B"
+          }
+        },
+        {
+          "type": "panel",
+          "settings": {
+            "eyebrow": "SS26",
+            "name": "Pants",
+            "cta": "Shop Pants",
+            "placeholder_bg": "#71271F"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

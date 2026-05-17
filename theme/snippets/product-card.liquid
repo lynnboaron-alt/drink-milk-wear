@@ -1,34 +1,39 @@
-<!-- Product card: image + category label + title + price + add button -->
-<div class="product-grid-item">
-  <a href="{{ product.url }}" class="product-grid-media" aria-label="{{ product.title }}">
+<!-- Product card — editorial, 3:4 image, generous space -->
+<div class="product-grid-item" data-animate>
+
+  <a href="{{ product.url }}" class="product-grid-media" aria-label="View {{ product.title }}">
     {%- if product.featured_image -%}
       <img
-        src="{{ product.featured_image | image_url: width: 600 }}"
-        srcset="{{ product.featured_image | image_url: width: 400 }} 400w,
-                {{ product.featured_image | image_url: width: 600 }} 600w"
-        sizes="(max-width: 600px) 50vw, 25vw"
-        alt="{{ product.featured_image.alt | default: product.title }}"
+        src="{{ product.featured_image | image_url: width: 800 }}"
+        srcset="{{ product.featured_image | image_url: width: 500 }} 500w,
+                {{ product.featured_image | image_url: width: 800 }} 800w"
+        sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw"
+        alt="{{ product.featured_image.alt | default: product.title | escape }}"
         width="{{ product.featured_image.width }}"
         height="{{ product.featured_image.height }}"
         loading="lazy"
       >
     {%- else -%}
-      <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
-        <span style="font-size:0.5rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(38,66,43,0.3);font-family:var(--font-body);">Product Image</span>
+      {%- assign bg = 'var(--sky)' -%}
+      {%- if product.type == 'Tops' -%}{%- assign bg = 'var(--burgundy)' -%}{%- endif -%}
+      {%- if product.type == 'Pants' -%}{%- assign bg = 'var(--forest)' -%}{%- endif -%}
+      <div style="width:100%;height:100%;background:{{ bg }};display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:0.5rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(249,245,230,0.25);font-family:var(--font-body);">{{ product.title }}</span>
       </div>
     {%- endif -%}
   </a>
 
-  {%- assign product_type = product.type | default: product.tags.first -%}
+  {%- comment -%} Build category + age label from product type and tags {%- endcomment -%}
   {%- assign age_tag = '' -%}
   {%- for tag in product.tags -%}
-    {%- if tag contains 'ages' or tag contains 'age' -%}
+    {%- assign tag_lower = tag | downcase -%}
+    {%- if tag_lower contains 'age' or tag_lower contains 'ages' -%}
       {%- assign age_tag = tag -%}
     {%- endif -%}
   {%- endfor -%}
 
   <p class="product-grid-category">
-    {%- if product_type != blank -%}{{ product_type }}{%- endif -%}
+    {%- if product.type != blank -%}{{ product.type }}{%- endif -%}
     {%- if age_tag != blank -%} · {{ age_tag }}{%- endif -%}
   </p>
 
@@ -43,10 +48,13 @@
     </span>
     <button
       class="product-grid-add"
-      data-product-id="{{ product.variants.first.id }}"
-      aria-label="Add {{ product.title }} to cart"
+      data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+      data-product-title="{{ product.title | escape }}"
+      aria-label="Add {{ product.title | escape }} to cart"
+      {%- unless product.available %} disabled style="opacity:0.4;cursor:not-allowed;"{%- endunless %}
     >
-      Add
+      {%- if product.available -%}Add{%- else -%}Sold Out{%- endif -%}
     </button>
   </div>
+
 </div>

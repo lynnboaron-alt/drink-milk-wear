@@ -1,49 +1,72 @@
-<!-- Collection page -->
-<div class="collection-hero">
-  <h1 class="collection-hero-title">{{ collection.title }}</h1>
-  {%- if collection.description != blank -%}
-    <p class="collection-hero-desc">{{ collection.description }}</p>
-  {%- endif -%}
+<!-- Collection page — curated drop, editorial 2-col presentation -->
+
+<!-- Intro header: title + count + description -->
+<div class="collection-intro">
+  <div class="collection-intro-left">
+    <p class="collection-intro-label">SS26 Drop</p>
+    <h1 class="collection-intro-title">{{ collection.title | replace: 'Collection', '' | strip }}</h1>
+  </div>
+  <div class="collection-intro-right">
+    <p class="collection-intro-count">{{ collection.products_count }} pieces</p>
+    {%- if collection.description != blank -%}
+      <p class="collection-intro-desc">{{ collection.description }}</p>
+    {%- else -%}
+      <p class="collection-intro-desc">Oversized essentials. Premium cotton. Built for little boys who move like the world is watching.</p>
+    {%- endif -%}
+  </div>
 </div>
 
-<div class="collection-grid-section">
-  <div class="container">
+<!-- Editorial grid: all products, staggered, 2-col desktop / 1-col mobile -->
+<div class="collection-editorial-grid">
 
-    <!-- Toolbar -->
-    <div class="collection-toolbar">
-      <div class="filter-group" role="group" aria-label="Filter by">
-        <button class="filter-chip active">All</button>
-        <button class="filter-chip">Tops</button>
-        <button class="filter-chip">Pants</button>
-        <button class="filter-chip">Sets</button>
-      </div>
-      <p style="font-family:var(--font-body);font-size:0.5625rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid-cream);">
-        {{ collection.products_count }} piece{%- if collection.products_count != 1 -%}s{%- endif -%}
-      </p>
+  {%- assign tops    = collection.products | where: 'type', 'Tops' -%}
+  {%- assign pants   = collection.products | where: 'type', 'Pants' -%}
+  {%- assign has_types = false -%}
+  {%- if tops.size > 0 and pants.size > 0 -%}
+    {%- assign has_types = true -%}
+  {%- endif -%}
+
+  {%- if has_types -%}
+
+    <!-- Tops category divider -->
+    <div class="collection-category-divider">
+      <span class="collection-category-divider-label">Tops</span>
     </div>
 
-    <!-- Grid -->
-    {%- paginate collection.products by 12 -%}
-      <div class="product-grid">
-        {%- for product in collection.products -%}
-          {%- render 'product-card', product: product -%}
-        {%- else -%}
-          <p style="grid-column:1/-1;text-align:center;padding:3rem;font-family:var(--font-body);color:var(--mid-cream);">No products found.</p>
-        {%- endfor -%}
-      </div>
+    {%- for product in tops -%}
+      {%- render 'product-card', product: product -%}
+    {%- endfor -%}
 
-      {%- if paginate.pages > 1 -%}
-        <div style="display:flex;justify-content:center;gap:0.5rem;margin-top:3rem;">
-          {%- for part in paginate.parts -%}
-            {%- if part.is_link -%}
-              <a href="{{ part.url }}" style="padding:0.5rem 0.875rem;border:1.5px solid var(--border);font-size:0.6875rem;font-family:var(--font-body);">{{ part.title }}</a>
-            {%- else -%}
-              <span style="padding:0.5rem 0.875rem;border:1.5px solid var(--forest);background:var(--forest);color:var(--cream);font-size:0.6875rem;font-family:var(--font-body);">{{ part.title }}</span>
-            {%- endif -%}
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
-    {%- endpaginate -%}
+    <!-- Pants category divider -->
+    <div class="collection-category-divider" style="margin-top:clamp(1rem,3vw,2rem);">
+      <span class="collection-category-divider-label">Pants</span>
+    </div>
 
-  </div>
+    {%- for product in pants -%}
+      {%- render 'product-card', product: product -%}
+    {%- endfor -%}
+
+  {%- else -%}
+
+    {%- for product in collection.products -%}
+      {%- render 'product-card', product: product -%}
+    {%- else -%}
+      <p style="grid-column:1/-1;text-align:center;padding:4rem 0;font-family:var(--font-body);color:var(--mid-cream);font-size:0.875rem;">
+        The drop is coming. Sign up below to be first.
+      </p>
+    {%- endfor -%}
+
+  {%- endif -%}
+
+</div>
+
+<!-- Bottom CTA: story / newsletter pull-down -->
+<div style="background:var(--cream);padding:clamp(2.5rem,6vw,5rem) var(--gap);border-top:1px solid var(--border);text-align:center;">
+  <p style="font-family:var(--font-body);font-size:0.5625rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--mid-cream);margin-bottom:1.25rem;">
+    The Drink Milk Way
+  </p>
+  <p class="t-editorial" style="color:var(--forest);margin-bottom:2rem;">
+    Raised wild.<br><em>Dressed good.</em>
+  </p>
+  <a href="/pages/about" class="btn btn-outline-forest">Our Story</a>
 </div>
