@@ -1,8 +1,23 @@
-<!-- Footer: burgundy, minimal -->
+<!-- Footer: burgundy, minimal.
+     Social links come from global Theme Settings → Social media,
+     so they only need to be set in one place. -->
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner container">
 
-    <p class="footer-logo">DRINK MILK</p>
+    <!-- Logo or wordmark -->
+    {%- if settings.logo != blank -%}
+      <a href="/" class="footer-logo" aria-label="{{ shop.name }}">
+        <img
+          src="{{ settings.logo | image_url: width: 160 }}"
+          alt="{{ shop.name }}"
+          width="80"
+          loading="lazy"
+          style="filter:brightness(0) invert(1);opacity:0.9;"
+        >
+      </a>
+    {%- else -%}
+      <a href="/" class="footer-logo">DRINK MILK</a>
+    {%- endif -%}
 
     <nav class="footer-links-row" aria-label="Footer navigation">
       {%- for link in linklists[section.settings.menu].links -%}
@@ -10,12 +25,22 @@
       {%- endfor -%}
     </nav>
 
+    <!-- Social from global settings -->
     <div class="footer-social">
-      {%- if section.settings.instagram != blank -%}
-        <a href="{{ section.settings.instagram }}" target="_blank" rel="noopener">Instagram</a>
+      {%- if settings.instagram_url != blank -%}
+        <a href="{{ settings.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">
+          Instagram
+        </a>
       {%- endif -%}
-      {%- if section.settings.tiktok != blank -%}
-        <a href="{{ section.settings.tiktok }}" target="_blank" rel="noopener">TikTok</a>
+      {%- if settings.tiktok_url != blank -%}
+        <a href="{{ settings.tiktok_url }}" target="_blank" rel="noopener" aria-label="TikTok">
+          TikTok
+        </a>
+      {%- endif -%}
+      {%- if settings.pinterest_url != blank -%}
+        <a href="{{ settings.pinterest_url }}" target="_blank" rel="noopener" aria-label="Pinterest">
+          Pinterest
+        </a>
       {%- endif -%}
     </div>
 
@@ -39,17 +64,8 @@
       "type": "link_list",
       "id": "menu",
       "label": "Footer menu",
-      "default": "footer"
-    },
-    {
-      "type": "url",
-      "id": "instagram",
-      "label": "Instagram URL"
-    },
-    {
-      "type": "url",
-      "id": "tiktok",
-      "label": "TikTok URL"
+      "default": "footer",
+      "info": "Social media links are set under Theme Settings → Social media."
     }
   ]
 }

@@ -8,11 +8,125 @@
     "theme_support_url": ""
   },
   {
-    "name": "Global",
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image",
+        "info": "Upload your DRINK MILK logo SVG or PNG. Recommended width: 300px. If empty, the text wordmark is used."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 80,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Logo width (desktop)",
+        "default": 140
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Shown in browser tabs. Recommended: 32×32px PNG."
+      }
+    ]
+  },
+  {
+    "name": "Colors",
     "settings": [
       {
         "type": "header",
-        "content": "Announcement Bar"
+        "content": "Brand palette"
+      },
+      {
+        "type": "color",
+        "id": "color_forest",
+        "label": "Forest green",
+        "info": "Primary dark — used for text, header background tint, footer sections.",
+        "default": "#26422B"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Cream",
+        "info": "Page background color.",
+        "default": "#F9F5E6"
+      },
+      {
+        "type": "color",
+        "id": "color_sky",
+        "label": "Sky blue",
+        "info": "Accent — used for image placeholders and editorial section backgrounds.",
+        "default": "#CDE3F6"
+      },
+      {
+        "type": "color",
+        "id": "color_burgundy",
+        "label": "Burgundy",
+        "info": "Call-to-action buttons, announcement bar, editorial sections, footer.",
+        "default": "#71271F"
+      },
+      {
+        "type": "color",
+        "id": "color_terracotta",
+        "label": "Terracotta",
+        "info": "Marquee ticker, badges, sale tags, highlights.",
+        "default": "#D6512A"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Heading font"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Editorial / heading font",
+        "info": "Used for display headlines like 'Wear it loose. Live it loud.' Default: Cormorant Garamond.",
+        "default": "cormorant_garamond_n4"
+      },
+      {
+        "type": "header",
+        "content": "Body font"
+      },
+      {
+        "type": "font_picker",
+        "id": "font_body",
+        "label": "Body / UI font",
+        "info": "Used for labels, buttons, navigation, product names, and paragraph text. Default: DM Sans.",
+        "default": "assistant_n4"
+      },
+      {
+        "type": "header",
+        "content": "Base size"
+      },
+      {
+        "type": "range",
+        "id": "type_base_size",
+        "min": 14,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "label": "Base font size",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Announcement bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "announcement_enabled",
+        "label": "Show announcement bar",
+        "default": true
       },
       {
         "type": "text",
@@ -21,28 +135,85 @@
         "default": "New drop · Oversized essentials · Free shipping over ₪450"
       },
       {
-        "type": "header",
-        "content": "Navigation"
-      },
+        "type": "url",
+        "id": "announcement_url",
+        "label": "Announcement link (optional)"
+      }
+    ]
+  },
+  {
+    "name": "Navigation",
+    "settings": [
       {
         "type": "link_list",
         "id": "menu",
-        "label": "Header menu",
-        "default": "main-menu"
+        "label": "Main menu",
+        "default": "main-menu",
+        "info": "Create this menu under Admin → Navigation. Recommended: 3–4 links max."
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart style",
+        "options": [
+          { "value": "drawer", "label": "Slide-out drawer (recommended)" },
+          { "value": "page",   "label": "Dedicated cart page" }
+        ],
+        "default": "drawer"
       },
       {
-        "type": "header",
-        "content": "Social"
-      },
+        "type": "checkbox",
+        "id": "cart_note",
+        "label": "Enable order note",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Social media",
+    "settings": [
       {
         "type": "url",
         "id": "instagram_url",
-        "label": "Instagram URL"
+        "label": "Instagram"
       },
       {
         "type": "url",
         "id": "tiktok_url",
-        "label": "TikTok URL"
+        "label": "TikTok"
+      },
+      {
+        "type": "url",
+        "id": "pinterest_url",
+        "label": "Pinterest"
+      }
+    ]
+  },
+  {
+    "name": "Spacing & layout",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "animations_enabled",
+        "label": "Enable scroll animations",
+        "default": true,
+        "info": "Fade-in effect as sections scroll into view."
+      },
+      {
+        "type": "select",
+        "id": "page_width",
+        "label": "Maximum page width",
+        "options": [
+          { "value": "1280px", "label": "Narrow (1280px)" },
+          { "value": "1440px", "label": "Standard (1440px)" },
+          { "value": "1600px", "label": "Wide (1600px)" }
+        ],
+        "default": "1440px"
       }
     ]
   }

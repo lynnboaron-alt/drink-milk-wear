@@ -1,7 +1,21 @@
 {
   "current": {
+    "logo_width": 140,
+    "color_forest": "#26422B",
+    "color_cream": "#F9F5E6",
+    "color_sky": "#CDE3F6",
+    "color_burgundy": "#71271F",
+    "color_terracotta": "#D6512A",
+    "font_heading": "cormorant_garamond_n4",
+    "font_body": "assistant_n4",
+    "type_base_size": 16,
+    "announcement_enabled": true,
     "announcement_text": "New drop · Oversized essentials · Free shipping over ₪450",
-    "menu": "main-menu"
+    "menu": "main-menu",
+    "cart_type": "drawer",
+    "cart_note": false,
+    "animations_enabled": true,
+    "page_width": "1440px"
   },
   "presets": {}
 }
